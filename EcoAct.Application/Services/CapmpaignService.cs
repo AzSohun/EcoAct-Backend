@@ -65,9 +65,30 @@ namespace EcoAct.Application.Services
                 StartDate = c.StartDate,
                 EndDate = c.EndDate,
                 IsActive = c.IsActive
-            });
+            }).ToList();
 
             return campaign;
+        }
+
+
+        public async Task<CampaignResponseDto?> GeGetCampaignByIdAsync(Guid id)
+        {
+
+            var getCampaign = await _repository.GetByIdAsync(id);
+
+            var campaign = new CampaignResponseDto
+            {
+                Title = getCampaign.Title,
+                Description = getCampaign.Despcription,
+                TargetTrees = getCampaign.TargetTrees,
+                PlantedTrees = getCampaign.PlantedTrees,
+                StartDate = getCampaign.StartDate,
+                EndDate = getCampaign.EndDate,
+                IsActive = getCampaign.IsActive
+            };
+
+            return campaign;
+
         }
 
     }
