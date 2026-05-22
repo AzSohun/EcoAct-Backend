@@ -36,5 +36,31 @@ namespace EcoAct.Infrastructure.Repositories
 
             return campaign;
         }
+
+
+        public async Task AddAsync(Campaign campaign)
+        {
+            await _context.Campaigns.AddAsync(campaign);
+            await _context.SaveChangesAsync();
+        }
+
+
+        public async Task UpdateAsync(Campaign campaign)
+        {
+            _context.Campaigns.Update(campaign);
+            await _context.SaveChangesAsync();
+        }
+
+
+        public async Task DeleteAsync(Guid id)
+        {
+            var existingCampaign = await GetByIdAsync(id);
+
+            if(existingCampaign != null)
+            {
+                _context.Campaigns.Remove(existingCampaign);
+                await _context.SaveChangesAsync();
+            }
+        }
     }
 }
