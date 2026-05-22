@@ -6,7 +6,7 @@ namespace EcoAct.Domain.Entities
 {
     public class Campaign
     {
-        public Guid id { get; set; }
+        public Guid Id { get; set; }
         public string Title { get; set; } = string.Empty;
         public string Despcription { get; set; } = string.Empty;
         public int TargetTrees { get; set; }

@@ -6,5 +6,8 @@ namespace EcoAct.Application.Services
 {
     internal class CapmpaignService
     {
+
+
+
     }
 }
