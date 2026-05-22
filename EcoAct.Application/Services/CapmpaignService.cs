@@ -51,5 +51,24 @@ namespace EcoAct.Application.Services
 
         }
 
+
+        public async Task<IEnumerable<CampaignResponseDto>> GetAllCampaignsAsync()
+        {
+            var campaigns = await _repository.GetAllAsync();
+
+            var campaign = campaigns.Select(c => new CampaignResponseDto
+            {
+                Title = c.Title,
+                Description = c.Despcription,
+                TargetTrees = c.TargetTrees,
+                PlantedTrees = c.PlantedTrees,
+                StartDate = c.StartDate,
+                EndDate = c.EndDate,
+                IsActive = c.IsActive
+            });
+
+            return campaign;
+        }
+
     }
 }
