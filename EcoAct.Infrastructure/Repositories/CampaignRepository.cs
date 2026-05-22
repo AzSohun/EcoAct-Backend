@@ -1,10 +1,30 @@
-﻿using System;
+﻿using EcoAct.Domain.Entities;
+using EcoAct.Domain.Repositories;
+using EcoAct.Infrastructure.Data;
+using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace EcoAct.Infrastructure.Repositories
 {
-    internal class CampaignRepository
+    public class CampaignRepository: ICampaignRepository
     {
+
+        private readonly ApplicationDbContext _context;
+
+        public CampaignRepository(ApplicationDbContext context)
+        {
+            _context = context;
+        }
+
+
+        public async Task<IEnumerable<Campaign>> GetAllAsync()
+        {
+            var campaigns = await _context.Campaigns.ToListAsync();
+
+            return campaigns;
+        }
+
     }
 }
