@@ -1,0 +1,6 @@
+@EcoAct.API_HostAddress = http://localhost:5150
+
+GET {{EcoAct.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

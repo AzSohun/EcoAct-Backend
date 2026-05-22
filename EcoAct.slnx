@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="EcoAct.API/EcoAct.API.csproj" />
+  <Project Path="EcoAct.Application/EcoAct.Application.csproj" />
+  <Project Path="EcoAct.Domain/EcoAct.Domain.csproj" />
+  <Project Path="EcoAct.Infrastructure/EcoAct.Infrastructure.csproj" />
+</Solution>

@@ -1,0 +1,110 @@
+# =========================
+# Build Folders
+# =========================
+bin/
+obj/
+out/
+
+# =========================
+# User-specific Files
+# =========================
+*.user
+*.rsuser
+*.suo
+*.userosscache
+*.sln.docstates
+
+# =========================
+# Visual Studio
+# =========================
+.vs/
+*.vsp
+*.vspx
+*.sap
+
+# =========================
+# Rider / JetBrains
+# =========================
+.idea/
+*.sln.iml
+
+# =========================
+# VS Code
+# =========================
+.vscode/
+
+# =========================
+# Logs
+# =========================
+*.log
+
+# =========================
+# OS Generated Files
+# =========================
+.DS_Store
+Thumbs.db
+
+# =========================
+# NuGet
+# =========================
+*.nupkg
+packages/
+!packages/build/
+
+# =========================
+# Entity Framework
+# =========================
+*.mdf
+*.ldf
+
+# =========================
+# Publish Output
+# =========================
+publish/
+wwwroot/dist/
+
+# =========================
+# Environment / Secrets
+# =========================
+appsettings.Development.json
+appsettings.Local.json
+.env
+.env.*
+
+# =========================
+# Azure
+# =========================
+PublishScripts/
+*.azurePubxml
+
+# =========================
+# Docker
+# =========================
+docker-compose.override.yml
+
+# =========================
+# Node Modules (Angular/React Frontend)
+# =========================
+node_modules/
+
+# =========================
+# Test Results
+# =========================
+TestResults/
+coverage/
+*.coverage
+*.coveragexml
+
+# =========================
+# Temporary Files
+# =========================
+tmp/
+temp/
+*.tmp
+
+# =========================
+# SQLite
+# =========================
+*.db
+*.sqlite
+*.sqlite3
