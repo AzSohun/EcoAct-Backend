@@ -2,9 +2,7 @@
 using EcoAct.Domain.Repositories;
 using EcoAct.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Text;
+
 
 namespace EcoAct.Infrastructure.Repositories
 {
