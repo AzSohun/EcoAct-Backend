@@ -108,3 +108,11 @@ temp/
 *.db
 *.sqlite
 *.sqlite3
+
+# .NET
+backend/bin/
+backend/obj/
+
+# Angular
+frontend/node_modules/
+frontend/dist/
