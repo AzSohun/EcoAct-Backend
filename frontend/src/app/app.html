@@ -1,15 +1,118 @@
-<h1>Welcome to EcoAct Dashboard.</h1>
+<section class="eco-dashboard">
 
+    <!-- Header -->
+    <header class="eco-header">
+        <div class="eco-header__brand">
+            <span class="eco-header__leaf" aria-hidden="true">🌿</span>
+            <div>
+                <h1 class="eco-header__title">EcoAct Dashboard</h1>
+                <p class="eco-header__subtitle">Tracking every tree, every campaign</p>
+            </div>
+        </div>
+        <div class="eco-header__stats">
+            <div class="stat-pill">
+                <span class="stat-pill__value">{{ campaignService.campaigns().length }}</span>
+                <span class="stat-pill__label">Campaigns</span>
+            </div>
+            <div class="stat-pill stat-pill--green">
+                <span class="stat-pill__value">
+                    {{ campaignService.campaigns() | activeCampaignsCount }}
+                </span>
+                <span class="stat-pill__label">Active</span>
+            </div>
+            <div class="stat-pill stat-pill--earth">
+                <span class="stat-pill__value">
+                    {{ campaignService.campaigns() | totalTreesPlanted | number:'1.0-0' }}
+                </span>
+                <span class="stat-pill__label">Trees Planted</span>
+            </div>
+        </div>
+    </header>
 
+    <!-- Campaign Grid -->
+    <div class="campaign-grid">
 
-<ul>
-    @for (campaign of campaignService.campaigns(); track campaign.id) {
+        @for (campaign of campaignService.campaigns(); track campaign.id) {
 
-    <li>{{campaign.title}}</li>
+        <article class="campaign-card" [class.campaign-card--active]="campaign.isActive">
 
-    }@empty {
-    <li>Loading campaigns or no data found...</li>
-    }
-</ul>
+            <!-- Status badge -->
+            <div class="campaign-card__badges">
+                <span class="badge" [class.badge--active]="campaign.isActive" [class.badge--ended]="!campaign.isActive">
+                    <span class="badge__dot"></span>
+                    {{ campaign.isActive ? 'Active' : 'Ended' }}
+                </span>
+            </div>
+
+            <!-- Title & Description -->
+            <div class="campaign-card__body">
+                <h2 class="campaign-card__title">{{ campaign.title }}</h2>
+                <p class="campaign-card__desc">{{ campaign.description }}</p>
+            </div>
+
+            <!-- Progress -->
+            <div class="campaign-card__progress">
+                <div class="progress-header">
+                    <span class="progress-header__label">Trees Planted</span>
+                    <span class="progress-header__count">
+                        <strong>{{ campaign.plantedTrees | number }}</strong>
+                        <span>/ {{ campaign.targetTrees | number }}</span>
+                    </span>
+                </div>
+                <div class="progress-track" role="progressbar" [attr.aria-valuenow]="campaign.plantedTrees"
+                    [attr.aria-valuemax]="campaign.targetTrees" aria-label="Trees planted progress">
+                    <div class="progress-fill"
+                        [style.width.%]="(campaign.plantedTrees / campaign.targetTrees) * 100 | clamp">
+                    </div>
+                </div>
+                <div class="progress-footer">
+                    <span class="progress-pct">
+                        {{ (campaign.plantedTrees / campaign.targetTrees) * 100 | number:'1.0-0' }}% complete
+                    </span>
+                    <span class="progress-remaining">
+                        {{ campaign.targetTrees - campaign.plantedTrees | number }} left
+                    </span>
+                </div>
+            </div>
+
+            <!-- Dates -->
+            <div class="campaign-card__dates">
+                <div class="date-item">
+                    <span class="date-item__icon" aria-hidden="true">📅</span>
+                    <div>
+                        <span class="date-item__label">Start</span>
+                        <span class="date-item__value">{{ campaign.startDate | date:'mediumDate' }}</span>
+                    </div>
+                </div>
+                <div class="date-divider" aria-hidden="true">→</div>
+                <div class="date-item">
+                    <span class="date-item__icon" aria-hidden="true">🏁</span>
+                    <div>
+                        <span class="date-item__label">End</span>
+                        <span class="date-item__value">{{ campaign.endDate | date:'mediumDate' }}</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card glow accent (active only) -->
+            <div class="campaign-card__glow" aria-hidden="true"></div>
+
+        </article>
+
+        } @empty {
+
+        <div class="empty-state">
+            <div class="empty-state__icon" aria-hidden="true">🌱</div>
+            <p class="empty-state__text">Loading campaigns or no data found...</p>
+        </div>
+
+        }
+
+    </div>
+
+</section>
+
+<router-outlet></router-outlet>
+
 
 <router-outlet></router-outlet>
